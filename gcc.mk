@@ -9,4 +9,4 @@ ${EXE} : ${OBJS}
 	g++ ${OBJS} ${LDFLAGS} -o $@
 
 ${LIBSO} : ${LIBSO_OBJS}
-	gcc -o $@ -shared ${LDFLAGS} $^ ${LIBS}
+	g++ -o $@ -shared ${LDFLAGS} $^ ${LIBS}

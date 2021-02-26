@@ -1,12 +1,13 @@
-CPPFLAGS=-I /usr/include/python3.6m
-LIBS=-lpython3.6m -lboost_python3-py36
+CPPFLAGS += -I /usr/include/python3.7m
+LIBS=-lpython3.7m 
 
-COMPOSANT = hello_ext
+COMPOSANT = hello_component
 
 LIBSO = ${COMPOSANT}.so
 LIBSO_OBJS = ${COMPOSANT}.o
 
 include ../gcc.mk
+include ../pybind11.mk
 
 
 all: $(LIBSO)
