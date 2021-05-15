@@ -10,3 +10,6 @@ ${EXE} : ${OBJS}
 
 ${LIBSO} : ${LIBSO_OBJS}
 	g++ -o $@ -shared ${LDFLAGS} $^ ${LIBS}
+
+${LIB} : $ ${LIB_OBJS}
+	ar -cr $@ $^
