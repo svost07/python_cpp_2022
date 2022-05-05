@@ -1,22 +1,19 @@
 #include <pybind11/pybind11.h>
 
-char version[]="1.0";
-
-char const* getVersion() {
-	return version;
-}
-
-char const* greet() {
-  return "hello, world";
-}
-
 namespace py = pybind11;
 
+struct Pet {
+Pet(const std::string &name) : name(name) { }
+void setName(const std::string &name_) { name = name_; }
+const std::string &getName() const { return name; }
+std::string name;
+};
 
-PYBIND11_MODULE(hello_component,greetings)
+
+PYBIND11_MODULE(hello_component,m)
 {
-  greetings.doc() = "greeting_object 1.0";
-  
-  greetings.def("greet", &greet, "a function saying hello");
-  greetings.def("getVersion", &getVersion, "a function returning the version");
+  py::class_<Pet>(m, "Pet")
+.def(py::init<const std::string &>())
+.def("setName", &Pet::setName)
+.def("getName", &Pet::getName);
 }
